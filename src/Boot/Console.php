@@ -95,6 +95,14 @@ class Console extends Boot
      */
     public function terminate(): void
     {
+        if ($this->app->getEnvironment() === 'testing') {
+            return;
+        }
+        
+        if (str_contains($_SERVER['argv'] ?? '', 'phpunit')) {
+            return;
+        }
+        
         if ($this->runningInConsole()) {
             $status = $this->app->get(ConsoleInterface::class)->run();
             exit($status);
