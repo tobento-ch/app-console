@@ -22,26 +22,21 @@ use Tobento\App\AppInterface;
 use Tobento\App\AppFactory;
 use Tobento\App\Boot;
 use Tobento\Service\Filesystem\Dir;
+use Tobento\Service\Filesystem\File;
 
 class ConsoleTest extends TestCase
 {    
-    protected function createApp(bool $deleteDir = true): AppInterface
+    protected function createApp(): AppInterface
     {
-        if ($deleteDir) {
-            (new Dir())->delete(__DIR__.'/../app/');
-        }
-        
-        (new Dir())->create(__DIR__.'/../app/');
+        (new Dir())->create(__DIR__.'/../../app/');
         
         $app = (new AppFactory())->createApp();
         
         $app->dirs()
-            ->dir(realpath(__DIR__.'/../../'), 'root:core')
-            // we set the root the same as the app, because of the console app migration.
-            ->dir(realpath(__DIR__.'/../app/'), 'root')
-            ->dir(realpath(__DIR__.'/../app/'), 'app')
+            ->dir(realpath(__DIR__.'/../../'), 'root')
+            ->dir($app->dir('root').'app', 'app')
             ->dir($app->dir('app').'config', 'config', group: 'config')
-            ->dir($app->dir('root:core').'vendor', 'vendor')
+            ->dir($app->dir('root').'vendor', 'vendor')
             // for testing only we add public within app dir.
             ->dir($app->dir('app').'public', 'public');
         
@@ -50,7 +45,8 @@ class ConsoleTest extends TestCase
     
     public static function tearDownAfterClass(): void
     {
-        //(new Dir())->delete(__DIR__.'/../app/');
+        (new Dir())->delete(__DIR__.'/../../app/');
+        (new File(__DIR__.'/../../ap'))->delete();
     }
     
     public function testInterfacesAreAvailable()
