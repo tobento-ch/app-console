@@ -70,7 +70,7 @@ $console = $app->get(ConsoleInterface::class);
 $app->run();
 ```
 
-If you are not using the [App Skeleton](https://github.com/tobento-ch/app-skeleton/) you may adjust the ```app``` file in the root directory with the path to your app:
+If you are not using the [App Skeleton](https://github.com/tobento-ch/app-skeleton/) you may adjust the ```ap``` file in the root directory with the path to your app:
 
 ```php
 // Get and run the application.
@@ -145,13 +145,13 @@ class AnyServiceBoot extends Boot
 To invoke application command just run:
 
 ```
-php app command:name
+php ap command:name
 ```
 
 To get a list of available commands:
 
 ```
-php app list
+php ap list
 ```
 
 # Credits
