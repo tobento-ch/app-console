@@ -1,5 +1,6 @@
 vendor
 build
+app
 composer.lock
 .phpunit.result.cache
 _notes/
