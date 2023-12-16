@@ -42,7 +42,7 @@ class Console implements MigrationInterface
         
         $this->files = [
             $this->dirs->get('root') => [
-                $vendor.'/resources/app',
+                $vendor.'/resources/ap',
             ],
         ];
     }
