@@ -99,7 +99,7 @@ class Console extends Boot
             return;
         }
         
-        if (str_contains($_SERVER['argv'] ?? '', 'phpunit')) {
+        if (str_contains($_SERVER['argv'][0] ?? '', 'phpunit')) {
             return;
         }
         
