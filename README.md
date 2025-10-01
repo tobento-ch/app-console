@@ -25,7 +25,7 @@ composer require tobento/app-console
 
 ## Requirements
 
-- PHP 8.0 or greater
+- PHP 8.4 or greater
 
 # Documentation
 
@@ -48,7 +48,7 @@ use Tobento\Service\Console\ConsoleInterface;
 use Tobento\Service\Console\ConsoleFactoryInterface;
 
 // Create the app
-$app = (new AppFactory())->createApp();
+$app = new AppFactory()->createApp();
 
 // Add directories:
 $app->dirs()
@@ -95,7 +95,7 @@ use Tobento\App\AppFactory;
 use Tobento\Service\Console\ConsoleInterface;
 
 // Create the app
-$app = (new AppFactory())->createApp();
+$app = new AppFactory()->createApp();
 
 // Add directories:
 $app->dirs()
